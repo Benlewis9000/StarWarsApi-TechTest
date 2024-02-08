@@ -17,7 +17,7 @@ internal class CharacterRepositoryTests
         ICharacterRepository repository = new CharacterRepository(characterClient);
         var result = (await repository.GetAll()).ToList();
         Assert.That(result.Count(), Is.EqualTo(2));
-        StringAssert.AreEqualIgnoringCase("Bob", result.First().Name);
+        Assert.That(result.First().Name, Is.EqualTo("Bob"));
     }
 
     [Test]
