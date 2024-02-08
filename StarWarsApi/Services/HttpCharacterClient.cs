@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using TestWebApi.Model;
+using StarWarsApi.Model;
 
-namespace TestWebApi.Services;
+namespace StarWarsApi.Services;
 
 public class HttpCharacterClient : ICharacterClient
 {

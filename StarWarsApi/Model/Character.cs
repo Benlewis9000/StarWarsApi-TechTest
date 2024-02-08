@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TestWebApi.Model;
+namespace StarWarsApi.Model;
 
 public class Character
 {

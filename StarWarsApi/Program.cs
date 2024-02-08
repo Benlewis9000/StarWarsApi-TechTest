@@ -1,4 +1,4 @@
-using TestWebApi.Services;
+using StarWarsApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

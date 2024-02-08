@@ -1,6 +1,6 @@
-﻿using TestWebApi.Model;
+﻿using StarWarsApi.Model;
 
-namespace TestWebApi.Services;
+namespace StarWarsApi.Services;
 
 public interface ICharacterClient
 {
