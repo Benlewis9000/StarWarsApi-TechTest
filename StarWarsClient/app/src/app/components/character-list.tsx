@@ -5,16 +5,15 @@ import { getCharacters } from "../api/api-client";
 import { CharacterRow } from "./character-row";
 
 const CharacterList = () => {
-    const [characters, setCharacters] = React.useState<Character[]>([]);
-    const [isLoading, setIsLoading] = React.useState<boolean>(true);
-    const [errorMessage, setErrorMessage] = React.useState<string>("");
-    const [isErrored, setIsErrored] = React.useState<boolean>(false);
+    const [characters, setCharacters] = useState<Character[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [isErrored, setIsErrored] = useState<boolean>(false);
     
     useEffect(() => {
-        setIsLoading(true);
         const fetchCharacters = async () => {
             const response = await getCharacters();
-            //setIsLoading(false);
+            setIsLoading(false);
             if (response.data === undefined){
                 setIsErrored(true);
                 setErrorMessage(response.error);
@@ -28,39 +27,41 @@ const CharacterList = () => {
     }, [])
 
     return (
-        <>
-            <div className="row mb-2">
-                <h5 className="themeFontColor text-center">
+        <div className="shadow d-flex flex-column justify-content-center text-center align-items-center">
+            <div className="m-2">
+                <h3 className=" themeFontColor">
                     Characters
-                </h5>
+                </h3>
             </div>
-            <div>
-                <p>{isLoading}</p>
-            {isLoading ?? <p>Loading...</p>}
-            </div>
-            {isErrored ? (
-                <p>{errorMessage}</p>
+            <div className="mb-3">
+                {isLoading ? (
+                    <div className="alert alert-light">Loading...</div>
                 ) : (
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Birth Year</th>
-                            <th>Homeworld</th>
-                            <th>Film Appearances</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {isLoading ?? <p>Loading...</p>}
-                        {isErrored ? (
-                            <p>{errorMessage}</p>
+                    isErrored ? (
+                        <div className="alert alert-danger">{errorMessage}</div>
                         ) : (
-                            characters.map(character => <CharacterRow key={character.name} character={character} />)
-                        )}
-                    </tbody>
-                </table>
-            )}
-        </>
+                        <table className="table table-striped table-hover shadow text-start">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Birth Year</th>
+                                    <th>Homeworld</th>
+                                    <th>Film Appearances</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {isLoading ?? <p>Loading...</p>}
+                                {isErrored ? (
+                                    <p>{errorMessage}</p>
+                                ) : (
+                                    characters.map(character => <CharacterRow key={character.name} character={character} />)
+                                )}
+                            </tbody>
+                        </table>
+                    )
+                )}
+            </div>
+        </div>
     );
 }
 

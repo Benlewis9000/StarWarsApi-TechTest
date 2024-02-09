@@ -7,13 +7,11 @@ interface TitleProps {
 
 const Title: React.FC<TitleProps> = ({message}) => {
     return (
-        <div className="container text-center">
+        <div className="container text-center mb-2">
             <div className="col">
                 <Image src="star-wars.svg" alt="logo" width="200" height="200"/>
             </div>
-            <div className="col h1">
-                {message}
-            </div>
+            <h1>{message}</h1>
         </div>
     );
 };
