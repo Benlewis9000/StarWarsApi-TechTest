@@ -11,7 +11,7 @@ namespace StarWarsApi.Controllers
 
         public CharacterController(ICharacterRepository characterRepository)
         {
-            this._characterRepository = characterRepository;
+            _characterRepository = characterRepository;
         }
 
         [HttpGet]
