@@ -11,11 +11,9 @@ interface Response<T> {
 function getCharacters(): Promise<Response<Character[]>> {
     return axios.get<Character[]>(`${baseUrl}/character`)
     .then((response) => {
-        console.log(response.data);
         return { data: response.data, error: "" };
     })
     .catch((error) => {
-        console.log(error.data);
         return {data: undefined, error: error.message};
     })
     .finally(() => {
