@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Character } from "./character";
+import { Character } from "../model/character";
 
 const baseUrl = "http://localhost:5000/api";
 

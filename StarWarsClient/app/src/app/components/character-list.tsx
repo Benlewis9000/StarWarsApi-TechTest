@@ -1,9 +1,7 @@
 "use client"
-import React, { useCallback } from "react";
-import { useEffect, useState } from "react";
-import { Character } from "./character";
-import { getCharacters } from "./api-client";
-import { get } from "http";
+import React, { useEffect, useState } from "react";
+import { Character } from "../model/character";
+import { getCharacters } from "../api/api-client";
 import { CharacterRow } from "./character-row";
 
 const CharacterList = () => {

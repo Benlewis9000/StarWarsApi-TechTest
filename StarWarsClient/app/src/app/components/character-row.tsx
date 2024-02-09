@@ -1,5 +1,5 @@
 import React from "react"
-import { Character } from "./character";
+import { Character } from "../model/character";
 
 interface CharacterItemProps {
     key: string,

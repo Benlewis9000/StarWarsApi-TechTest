@@ -1,5 +1,5 @@
-import { Title } from "./title";
-import { CharacterList } from "./character-list"
+import { Title } from "./components/title";
+import { CharacterList } from "./components/character-list"
 
 export default function Home() {
   return (
