@@ -1,8 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Title } from "./title";
+import { CharacterList } from "./character-list"
 
 export default function Home() {
   return (
-    <h1>Star Wars API</h1>
+    <>
+      <Title message="Star Wars API" />
+      <CharacterList></CharacterList>
+    </>
   );
 }
