@@ -5,7 +5,13 @@ namespace StarWarsApi.Services;
 
 public class HttpCharacterClient : ICharacterClient
 {
+    private readonly ILogger _logger;
     private readonly Uri _swapiEndpoint = new Uri("https://swapi.dev/api/");
+
+    public HttpCharacterClient(ILogger<HttpCharacterClient> logger)
+    {
+        _logger = logger;
+    }
 
     public async Task<IEnumerable<Character>> FetchAsync()
     {
@@ -26,8 +32,6 @@ public class HttpCharacterClient : ICharacterClient
             json = await response.Content.ReadAsStringAsync();
             character.Homeworld = JsonConvert.DeserializeObject<PlanetResponse>(json).Name;
         }
-
-        // TODO catch http and json exceptions
 
         return characterResponses.Select(r => new Character
             { Name = r.Name, BirthYear = r.BirthYear, HomeWorld = r.Homeworld, FilmCount = r.Films.Count });
