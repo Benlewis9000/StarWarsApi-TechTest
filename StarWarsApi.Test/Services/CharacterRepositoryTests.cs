@@ -39,8 +39,8 @@ internal class CharacterRepositoryTests
         ICharacterRepository repository = new CharacterRepository(_logger, characterClient);
         await repository.GetAll();
         await characterClient.Received(1).FetchAsync();
-        await repository.GetAll();
         characterClient.ClearReceivedCalls();
+        await repository.GetAll();
         await characterClient.DidNotReceive().FetchAsync();
     }
 }
